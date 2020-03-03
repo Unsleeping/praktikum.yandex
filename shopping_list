@@ -1,0 +1,31 @@
+# напишите здесь функцию print_shopping_list(),
+# подобрав уникальные названия продуктов и сложив значения
+def print_shopping_list(recipe1, recipe2):
+    inter = set(recipe1).intersection(set(recipe2))
+    ans = {}
+    for elem in inter:
+        ans[elem] = recipe1[elem] + recipe2[elem]
+    for elem in set(recipe1).union(recipe2):
+        if elem not in ans:
+            if elem in recipe1:
+                ans[elem] = recipe1[elem]
+            else:
+                ans[elem] = recipe2[elem]
+    for k,v in ans.items():
+        print(str(k) + ': ' + str(v))
+        
+
+
+pizza = {'мука, кг': 1,
+         'помидоры, кг': 1.5,
+         'шампиньоны, кг': 1.5,
+         'сыр, кг': 0.8,
+         'оливковое масло, л': 0.1,
+         'дрожжи, г': 50}
+salad = {'огурцы, кг': 1,
+         'перцы, кг': 1,
+         'помидоры, кг': 1.5,
+         'оливковое масло, л': 0.1,
+         'листья салата, кг': 0.4}
+
+print_shopping_list(pizza, salad)
